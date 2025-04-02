@@ -1,31 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Tomato - Audio & Image</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Tomato Pronunciation</title>
     <style>
+        /* 基础重置和全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 渐变背景和基础布局 */
         body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            padding: 20px;
         }
-        img {
-            max-width: 80%;
+
+        /* 主容器样式 */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* 标题样式 */
+        h1 {
+            color: #2d3436;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* 图片样式 */
+        .tomato-image {
+            width: 100%;
             height: auto;
-            margin-bottom: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* 音频播放器容器 */
+        .audio-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 自定义音频控件样式 */
+        audio {
+            width: 100%;
+            height: 50px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: #ffffff;
+        }
+
+        audio::-webkit-media-controls-play-button {
+            background-color: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        /* 提示文字 */
+        .instruction {
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+                margin-top: 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .tomato-image {
+                margin: 15px 0;
+            }
+
+            .audio-container {
+                padding: 12px;
+            }
+
+            audio {
+                height: 45px;
+            }
+        }
+
+        /* 交互反馈 */
+        .tomato-image:active {
+            transform: scale(0.98);
+        }
+
+        /* 加载动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            animation: fadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
     </style>
 </head>
 <body>
-    <!-- 图片 -->
-    <img src="tomato.jpg" alt="Tomato Image">
-    
-    <!-- 音频播放器 -->
-    <audio controls>
-        <source src="tomato.mp3" type="audio/mpeg">
-        您的浏览器不支持音频播放。
-    </audio>
+    <div class="container">
+        <h1>🍅 Tomato Pronunciation</h1>
+        <img src="tomato.jpg" alt="Juicy Tomato" class="tomato-image">
+        <div class="audio-container">
+            <audio controls>
+                <source src="tomato.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <p class="instruction">Tap the play button to hear the pronunciation</p>
+    </div>
 </body>
 </html>
